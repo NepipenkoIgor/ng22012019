@@ -27,6 +27,10 @@ export class TooltipDirective implements OnInit {
         this._render.appendChild(this._elementRef.nativeElement, this._tooltipContext);
     }
 
+    // @HostListener('window:resize')
+    // public tooltipHide(): void {
+    //     console.log(1);
+    // }
 
     public show() {
         this._render.addClass(this._tooltipContext, 'open');

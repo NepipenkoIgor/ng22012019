@@ -1,27 +1,76 @@
 <section class="main registration">
+
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-12">-->
+        <!--<div class="registration-wrapper">-->
+          <!--<h1>Регистрация</h1>-->
+          <!--<form #f="ngForm">-->
+            <!--<label class="input-wrapper ">-->
+              <!--<span>Ваше имя</span>-->
+              <!--&lt;!&ndash;FormControl&ndash;&gt;-->
+              <!--<input type="text" ngModel name="firstName" required>-->
+            <!--</label>-->
+            <!--<label class="input-wrapper">-->
+              <!--<span>Ваша фамилия</span>-->
+              <!--<input type="text" ngModel name="lastName">-->
+            <!--</label>-->
+            <!--&lt;!&ndash;<label class="input-wrapper">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span>Ваш e-mail</span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="email">&ndash;&gt;-->
+            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+            <!--<div ngModelGroup="passwordGroup">-->
+              <!--<label class="input-wrapper">-->
+                <!--<span>Пароль</span>-->
+                <!--<input type="password" ngModel name="password">-->
+              <!--</label>-->
+              <!--<label class="input-wrapper">-->
+                <!--<span>Повторить Пароль</span>-->
+                <!--<input type="password" ngModel name="cpassword">-->
+              <!--</label>-->
+            <!--</div>-->
+            <!--<div class="btn-wrapper">-->
+              <!--<button>Зарегистрироваться</button>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="registration-wrapper">
           <h1>Регистрация</h1>
-          <form action="">
-            <label class="input-wrapper no-valid">
+          <form [formGroup]="customForm">
+            <label class="input-wrapper " [ngClass]="{'no-valid':customForm.get('firstName').invalid}">
               <span>Ваше имя</span>
-              <input type="text">
-              <div class="valid-message">Введите корректное имя</div>
+              <!--FormControl-->
+              <input type="text" [formControl]="customForm.get('firstName')">
+              <div class="valid-message" *ngIf="customForm.get('firstName').invalid">Введите корректное имя</div>
             </label>
-            <label class="input-wrapper">
+            <label class="input-wrapper" [ngClass]="{'no-valid':customForm.get('lastName').invalid}">
               <span>Ваша фамилия</span>
-              <input type="text">
+              <input type="text" formControlName="lastName">
+              <div class="valid-message" *ngIf="customForm.get('lastName').invalid">Введите корректное имя</div>
             </label>
+
             <label class="input-wrapper">
-              <span>Ваш e-mail</span>
-              <input type="email">
+            <span>Мужчина</span>
+              <app-switcher formControlName="male"></app-switcher>
             </label>
-            <label class="input-wrapper">
-              <span>Пароль</span>
-              <input type="password">
-            </label>
+            <div formGroupName="passwordGroup">
+              <label class="input-wrapper">
+                <span>Пароль</span>
+                <input type="password" formControlName="password">
+              </label>
+              <label class="input-wrapper">
+                <span>Повторить Пароль</span>
+                <input type="password" formControlName="cpassword">
+              </label>
+            </div>
             <div class="btn-wrapper">
               <button>Зарегистрироваться</button>
             </div>
@@ -30,22 +79,29 @@
       </div>
     </div>
   </div>
-  <div class="textContainer">
-    <div class="container">
-      <div class="row">
-        <h3 class="textContainer__header">Интернет магазин отделки и декора интерьеров <span>GLUTS</span></h3>
 
-        <p class="textContainer__paragraph">Мы рады приветствовать Вас на сайте компании «Глатс». У нас существует огромный ассортимент продукции
-          для насыщения интерьера
-          и выгодные условия для заказчиков, архитекторов и дизайнеров. Мы можем предложить Вашему вниманию
-          все необходимое для создания
-          изысканного, уникального интерьера: обои, текстиль, аксессуары, ковры, мебель и светильники и многие
-          другие предметы интерьера. У нас
-          Вы найдете эксклюзивные обои известных европейских и американских брендов: шелковые обои от Paul
-          Mongomery, изысканные бумажные обои от Sanderson , Zoffany и Morris &Co, английские обои ручной
-          работы от Fromental , высококачественные обои необычного дизайна PierreFrey ,
-          инновационные обои Marburg</p>
-      </div>
-    </div>
-  </div>
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-lg-12">-->
+        <!--<div class="registration-wrapper">-->
+          <!--<h1>Регистрация</h1>-->
+          <!--<form [formGroup]="formArrayModel">-->
+            <!--<label class="input-wrapper">-->
+              <!--<span>Ваш e-mail</span>-->
+              <!--<ul formGroupName="emails">-->
+                <!--<li *ngFor="let e of formArrayModel.get('emails').controls; index as i">-->
+                  <!--<input type="email" [formControlName]="i">-->
+                  <!--<span (click)="removeEmail(i)">X</span>-->
+                <!--</li>-->
+              <!--</ul>-->
+            <!--</label>-->
+          <!--</form>-->
+          <!--<button (click)="addEmail()">Add email</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+  <pre>{{customForm.value | json}}</pre>
 </section>
