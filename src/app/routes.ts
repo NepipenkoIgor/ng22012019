@@ -3,6 +3,7 @@ import { ProductsComponent } from './content/products/products.component';
 import { ProductListComponent } from './content/products/product-list/product-list.component';
 import { OneProductComponent } from './content/products/one-product/one-product.component';
 import { ResolveService } from './content/products/one-product/resolve.service';
+import { CdComponent } from './content/cd/cd.component';
 
 export const routes: Route[] = [
     {
@@ -37,6 +38,10 @@ export const routes: Route[] = [
     {
         path: 'registration',
         loadChildren: './content/signup/signup.module#SignupModule'
+    },
+    {
+        path: 'cd',
+        component: CdComponent
     },
     {
         path: '**',

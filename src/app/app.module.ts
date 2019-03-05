@@ -27,6 +27,10 @@ import { OneProductComponent } from './content/products/one-product/one-product.
 import { CurrentProductEffects } from './store/effects/current-products.effect';
 import { ResolveService } from './content/products/one-product/resolve.service';
 import { CustomPreloadService } from './common/services/custom-preload.service';
+import { CdComponent } from './content/cd/cd.component';
+import { DefaultComponent } from './content/cd/default/default.component';
+import { OnPushComponent } from './content/cd/on-push/on-push.component';
+import { FormsModule } from '@angular/forms';
 // module, directive,pipe, service
 
 // es6 - import/export let/const
@@ -46,11 +50,15 @@ import { CustomPreloadService } from './common/services/custom-preload.service';
         ProductComponent,
         ProductsComponent,
         ProductListComponent,
-        OneProductComponent
+        OneProductComponent,
+        CdComponent,
+        DefaultComponent,
+        OnPushComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
+        FormsModule,
         RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadService }),
         StoreModule.forRoot(reducers),
         EffectsModule.forRoot([ProductsEffects, CurrentProductEffects]),

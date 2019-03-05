@@ -12,7 +12,9 @@ export class ProductsService {
 
     public getProducts(): Observable<IProduct[]> {
         // example const user: IUser = { firstName: 'Igor' };
-        return this._http.get<IProduct[]>(`/products`);
+        return this._http.get<IProduct[]>(`/products`, {
+            headers: { 'Content-Type':  'jpeg'}
+        });
     }
 
     public getProduct(id: string): Observable<IProduct> {

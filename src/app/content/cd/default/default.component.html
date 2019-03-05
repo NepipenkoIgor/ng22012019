@@ -1,0 +1,7 @@
+<div>
+  <input type="text" [(ngModel)]="person.firstName">
+</div>
+<div>
+  <input type="text" [(ngModel)]="person.lastName">
+</div>
+<span>{{person.getDate() | date:'hh:mm:ss'}}</span>
